@@ -1,0 +1,22 @@
+defaultService: projects/searce-playground/global/backendServices/akbar-backend-1
+name: matcher1
+routeRules:
+- matchRules:
+  - headerMatches:
+    - exactMatch: Android
+      headerName: User-Agent
+    prefixMatch: /
+  priority: 1
+  routeAction:
+    weightedBackendServices:
+    - backendService: projects/searce-playground/global/backendServices/akbar-backend-1
+      weight: 100
+- matchRules:
+  - prefixMatch: /
+  priority: 2
+  routeAction:
+    weightedBackendServices:
+    - backendService: projects/searce-playground/global/backendServices/akbar-backend-1
+      weight: 50
+    - backendService: projects/searce-playground/global/backendServices/akbar-backend-2
+      weight: 50
