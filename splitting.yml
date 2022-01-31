@@ -1,0 +1,16 @@
+ kind: compute#urlMap
+ name: akbar-poc
+ defaultService: projects/searce-playground/global/backendServices/akbar-backend-1
+ hostRules:
+ - hosts:
+   - 'akbar.searceinc.org'
+   pathMatcher: pathmap
+ pathMatchers:
+ - defaultService: projects/searce-playground/global/backendServices/akbar-backend-1
+   name: pathmap
+   pathRules:
+   - paths:
+     - /app
+     - /app/*
+     service: projects/searce-playground/global/backendServices/akbar-backend-2
+
